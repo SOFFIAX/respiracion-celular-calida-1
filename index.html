@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La respiración celular</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fondo:#f4f8f2; --tinta:#2f3d36; --suave:#667a70; --blanco:#ffffff;
+  --verde:#4f9363; --verde-claro:#dff0e3;
+  --rosa:#e9833f; --rosa-claro:#fde4d0;
+  --sol:#f7c948; --sol-claro:#fff1c4;
+  --cielo:#8ecae6; --cielo-claro:#dff2fa;
+  --titulo:'Fredoka','Trebuchet MS',sans-serif;
+  --texto:'Nunito','Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--fondo);color:var(--tinta);font-family:var(--texto);font-size:1.08rem;line-height:1.7}
+h1,h2,h3{font-family:var(--titulo);font-weight:600;margin:0 0 .5em;line-height:1.2}
+h1{font-size:clamp(2.4rem,7vw,4rem)}
+h2{font-size:clamp(1.8rem,4.5vw,2.5rem)}
+h3{font-size:1.4rem}
+p{margin:0 0 1em;max-width:65ch}
+a:focus-visible{outline:3px solid var(--rosa);outline-offset:3px}
+
+/* Barra de navegación */
+nav{position:sticky;top:0;z-index:10;background:var(--blanco);border-bottom:3px dotted var(--rosa-claro)}
+.nav-in{max-width:1000px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:16px}
+.logo{font-family:var(--titulo);font-size:1.25rem;text-decoration:none;color:var(--verde);white-space:nowrap}
+.menu{display:flex;gap:6px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.menu::-webkit-scrollbar{display:none}
+.menu a{padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:700;color:var(--suave);white-space:nowrap}
+.menu a:hover{background:var(--sol-claro);color:var(--tinta)}
+@media (max-width:640px){.logo{display:none}}
+
+main{max-width:1000px;margin:0 auto;padding:0 20px}
+section{padding:64px 0 0}
+.intro{color:var(--suave);font-size:1.2rem}
+
+/* Inicio */
+.hero{text-align:center;padding-top:56px}
+.hero p{margin-left:auto;margin-right:auto}
+.hero h1{color:var(--verde)}
+.ecuacion{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;margin:28px 0 0;font-family:var(--titulo);font-size:1.15rem}
+.ecuacion span{padding:10px 18px;border-radius:999px}
+.g{background:var(--verde-claro)} .o{background:var(--cielo-claro)} .c{background:var(--rosa-claro)} .e{background:var(--sol);}
+
+/* Camino de la glucosa */
+.camino{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:40px}
+.paso{flex:1 1 190px;max-width:230px;background:var(--blanco);border-radius:28px 28px 28px 8px;padding:20px;text-align:center;box-shadow:0 6px 0 var(--rosa-claro)}
+.paso .ic{font-size:2rem;display:block;margin-bottom:4px}
+.paso b{font-family:var(--titulo);font-size:1.15rem;display:block}
+.paso small{color:var(--suave);font-size:.95rem;line-height:1.4;display:block}
+
+/* Etapas */
+.etapa{display:flex;gap:22px;background:var(--blanco);border-radius:32px;padding:28px;margin-bottom:22px;box-shadow:0 6px 0 var(--verde-claro)}
+.etapa:nth-of-type(2){box-shadow:0 6px 0 var(--cielo-claro)}
+.etapa:nth-of-type(3){box-shadow:0 6px 0 var(--sol-claro)}
+.globo{flex:0 0 76px;height:76px;border-radius:55% 45% 60% 40%;background:var(--verde-claro);display:flex;align-items:center;justify-content:center;font-family:var(--titulo);font-size:2.2rem;color:var(--verde)}
+.etapa:nth-of-type(2) .globo{background:var(--cielo-claro);color:#3a8aae}
+.etapa:nth-of-type(3) .globo{background:var(--sol-claro);color:#b98a00}
+.datos{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.dato{background:var(--fondo);border-radius:18px;padding:8px 16px;font-size:1rem}
+.dato b{color:var(--rosa)}
+@media (max-width:600px){.etapa{flex-direction:column;gap:10px;padding:22px}}
+
+/* Tipos */
+.tipos{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-bottom:26px}
+.tipo{border-radius:32px;padding:28px}
+.tipo.aero{background:var(--verde-claro)} .tipo.anae{background:var(--rosa-claro)}
+.tipo ul{margin:0;padding-left:1.2em}
+.tipo li{margin-bottom:.4em}
+.cifra{font-family:var(--titulo);font-size:2rem;margin-bottom:10px}
+.aero .cifra{color:var(--verde)} .anae .cifra{color:var(--rosa)}
+.tabla{overflow-x:auto;border-radius:24px;background:var(--blanco)}
+table{width:100%;min-width:540px;border-collapse:collapse}
+th,td{text-align:left;padding:14px 18px;vertical-align:top}
+th{font-family:var(--titulo);background:var(--sol-claro)}
+tr+tr td{border-top:2px dotted var(--rosa-claro)}
+td:first-child{font-weight:700}
+
+/* Importancia */
+.tarjetas{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.tarjeta{background:var(--blanco);border-radius:28px 8px 28px 8px;padding:24px;box-shadow:0 6px 0 var(--sol-claro)}
+.tarjeta .ic{font-size:2rem}
+.tarjeta p{margin:0}
+
+/* Conclusión */
+.conclusion{margin:64px 0 40px;background:var(--verde);color:#fff;border-radius:40px 40px 40px 12px;padding:40px 32px}
+.conclusion p{font-size:1.15rem;margin:0}
+footer{text-align:center;color:var(--suave);padding:0 20px 40px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="#inicio">🌱 Respiración celular</a>
+    <div class="menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#etapas">Etapas</a>
+      <a href="#tipos">Tipos</a>
+      <a href="#importancia">Importancia</a>
+      <a href="#conclusion">Conclusión</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section id="inicio" class="hero">
+    <h1>La respiración celular</h1>
+    <p class="intro">Es la forma en que tus células sacan energía de los alimentos. Descomponen la glucosa poco a poco y guardan esa energía en una molécula llamada ATP.</p>
+    <div class="ecuacion">
+      <span class="g">Glucosa</span> + <span class="o">6 O₂</span> → <span class="c">6 CO₂</span> + <span class="o">6 H₂O</span> + <span class="e">ATP</span>
+    </div>
+    <div class="camino">
+      <div class="paso"><span class="ic">🍞</span><b>Glucosa</b><small>Entra a la célula como nutriente</small></div>
+      <div class="paso"><span class="ic">✂️</span><b>Glucólisis</b><small>Se parte en 2 piruvatos</small></div>
+      <div class="paso"><span class="ic">🔄</span><b>Ciclo de Krebs</b><small>Libera CO₂ y carga transportadores</small></div>
+      <div class="paso"><span class="ic">⚡</span><b>Cadena de transporte</b><small>Produce la mayor parte del ATP</small></div>
+    </div>
+  </section>
+
+  <section id="etapas">
+    <h2>Las tres etapas principales</h2>
+    <p class="intro">La glucosa se descompone de forma progresiva y se libera energía que la célula aprovecha. Los datos son por cada molécula de glucosa.</p>
+
+    <article class="etapa">
+      <div class="globo">1</div>
+      <div>
+        <h3>Glucólisis</h3>
+        <p>La glucosa (6 carbonos) se divide en dos moléculas de piruvato (3 carbonos cada una). No necesita oxígeno.</p>
+        <div class="datos">
+          <span class="dato">Dónde: <b>citoplasma</b></span>
+          <span class="dato">Sale: <b>2 piruvato y 2 NADH</b></span>
+          <span class="dato">ATP neto: <b>2</b></span>
+        </div>
+      </div>
+    </article>
+
+    <article class="etapa">
+      <div class="globo">2</div>
+      <div>
+        <h3>Ciclo de Krebs</h3>
+        <p>Cada piruvato se transforma primero en acetil-CoA y libera CO₂. Luego entra al ciclo, que libera más CO₂ y carga transportadores de electrones (NADH y FADH₂).</p>
+        <div class="datos">
+          <span class="dato">Dónde: <b>matriz de la mitocondria</b></span>
+          <span class="dato">Sale: <b>6 NADH, 2 FADH₂ y 4 CO₂</b></span>
+          <span class="dato">ATP directo: <b>2</b></span>
+        </div>
+      </div>
+    </article>
+
+    <article class="etapa">
+      <div class="globo">3</div>
+      <div>
+        <h3>Cadena de transporte de electrones</h3>
+        <p>El NADH y el FADH₂ entregan sus electrones a una serie de proteínas. Eso impulsa la fabricación de ATP. El oxígeno recibe los electrones al final y forma agua.</p>
+        <div class="datos">
+          <span class="dato">Dónde: <b>membrana interna de la mitocondria</b></span>
+          <span class="dato">Necesita: <b>oxígeno</b></span>
+          <span class="dato">ATP: <b>aprox. 26 a 28</b></span>
+        </div>
+      </div>
+    </article>
+    <p>En total, la respiración aeróbica rinde aproximadamente 30 a 32 ATP por glucosa. Algunos textos indican hasta 36 o 38, según cómo se cuente.</p>
+  </section>
+
+  <section id="tipos">
+    <h2>Dos tipos de respiración celular</h2>
+    <div class="tipos">
+      <div class="tipo aero">
+        <h3>Aeróbica</h3>
+        <div class="cifra">Aprox. 30 a 32 ATP</div>
+        <ul>
+          <li>Necesita oxígeno.</li>
+          <li>Produce una mayor cantidad de energía.</li>
+          <li>Completa las tres etapas.</li>
+        </ul>
+      </div>
+      <div class="tipo anae">
+        <h3>Anaeróbica</h3>
+        <div class="cifra">2 ATP</div>
+        <ul>
+          <li>Ocurre sin utilizar oxígeno.</li>
+          <li>Obtiene energía de otras maneras, como la fermentación.</li>
+          <li>Generalmente produce menos ATP.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tabla">
+      <table>
+        <thead><tr><th>Característica</th><th>Aeróbica</th><th>Anaeróbica</th></tr></thead>
+        <tbody>
+          <tr><td>Oxígeno</td><td>Necesario</td><td>No se usa</td></tr>
+          <tr><td>Etapas</td><td>Glucólisis, ciclo de Krebs y cadena de transporte</td><td>Glucólisis seguida de fermentación</td></tr>
+          <tr><td>Energía</td><td>Aprox. 30 a 32 ATP por glucosa</td><td>2 ATP por glucosa</td></tr>
+          <tr><td>Productos finales</td><td>CO₂ y H₂O</td><td>Ácido láctico, o etanol y CO₂, según el organismo</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="importancia">
+    <h2>Por qué es importante</h2>
+    <p class="intro">Es esencial para todos los seres vivos porque da la energía necesaria para mantener la vida. Sin este proceso, las células no podrían realizar bien sus funciones.</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="ic">🌳</span><h3>Crecer</h3><p>Los organismos necesitan ATP para formar nuevas células y tejidos.</p></div>
+      <div class="tarjeta"><span class="ic">🧬</span><h3>Desarrollarse</h3><p>Cada función de la célula depende de la energía que libera este proceso.</p></div>
+      <div class="tarjeta"><span class="ic">🏃</span><h3>Mantenerse activos</h3><p>Permite caminar, estudiar, respirar y mantener el corazón funcionando.</p></div>
+    </div>
+  </section>
+
+  <section id="conclusion" style="padding-top:0">
+    <div class="conclusion">
+      <h2>Conclusión</h2>
+      <p>La respiración celular es un proceso fundamental para la vida porque transforma la energía química de los nutrientes en una forma de energía que las células pueden utilizar. Gracias a ella, nuestro cuerpo puede realizar actividades cotidianas como caminar, estudiar, respirar y mantener el corazón funcionando.</p>
+    </div>
+  </section>
+</main>
+<footer>La respiración celular · Biología</footer>
+
+</body>
+</html>
